@@ -5,12 +5,14 @@ const typeDefs = `
     email: String
     password: String
     stars: [Star]
-    planets: [Planet]
+    
   }
 
    type Star {
     _id: ID
     starName: String!
+    planets: [Planet]
+    firstFinder: User!
   }
 
   type Planet {
@@ -24,7 +26,6 @@ const typeDefs = `
     stableRotation: Boolean
     water: Boolean
     gravity: Float
-    firstFinder: User!
     planetHabitable: Boolean
   }
 
@@ -56,15 +57,15 @@ const typeDefs = `
 
     addStar(starName: String!): Star
 
-    addPlanet(star: Star!, distanceFromStar: Float, declination: Float, rightAscension: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: User!, planetHabbitable: Boolean): Planet
+    addPlanet(star: Star!, distanceFromStar: Float, declination: Float, rightAscension: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: User!): Planet
 
     editStar(starId: ID, starName: String): Star
 
     editPlanet(star: Star, _id: ID, distanceFromStar: Float, declination: Float, rightAscension: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: User!, planetHabbitable: Boolean): Planet
 
-    deleteStar(starId: ID, starName: String): Star
+    deleteStar(starId: ID): Star
 
-    deletePlanet(_id: ID, distanceFromStar: Float, declination: Float, rightAscension: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: User!, planetHabbitable: Boolean): Planet
+    deletePlanet(_id: ID): Planet
   } 
 `;
 
