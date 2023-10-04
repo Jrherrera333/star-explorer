@@ -5,7 +5,6 @@ const typeDefs = `
     email: String
     password: String
     stars: [Star]
-    
   }
 
    type Star {
