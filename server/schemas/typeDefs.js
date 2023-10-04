@@ -5,12 +5,13 @@ const typeDefs = `
     email: String
     password: String
     stars: [Star]
-    planets: [Planet]
   }
 
    type Star {
     _id: ID
     starName: String!
+    planets: [Planet]
+    firstFinder: User!
   }
 
   type Planet {
@@ -24,7 +25,6 @@ const typeDefs = `
     stableRotation: Boolean
     water: Boolean
     gravity: Float
-    firstFinder: User!
     planetHabitable: Boolean
   }
 
