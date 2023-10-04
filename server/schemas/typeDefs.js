@@ -7,19 +7,23 @@ const typeDefs = `
     thoughts: [Thought]!
   }
 
-  type Thought {
+   type Star {
     _id: ID
-    thoughtText: String
-    thoughtAuthor: String
-    createdAt: String
-    comments: [Comment]!
+    starName: String!
   }
 
-  type Comment {
+  type Planet {
     _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
+    star: Star!
+    distanceFromStar: Float
+    declination: Float
+    rightAscension: Float
+    circularOrbit: Boolean
+    stableRotation: Boolean
+    water: Boolean
+    gravity: Float
+    firstFinder: User!
+    planetHabitable: Boolean
   }
 
   type Auth {
@@ -30,19 +34,21 @@ const typeDefs = `
   type Query {
     users: [User]
     user(username: String!): User
-    thoughts(username: String): [Thought]
-    thought(thoughtId: ID!): Thought
+    stars: [Star]
+    star(starId: ID!): Star
     me: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addThought(thoughtText: String!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
-    removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
-  }
+    addStar(starName: String!): Star
+    addPlanet(distanceFromStar: Float, declination: Float, rightAscension: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: User!, planetHabbitable: Boolean): Planet
+    editStar(starId: ID, starName: String): Star
+    editPlanet(_id: ID, distanceFromStar: Float, declination: Float, rightAscension: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: User!, planetHabbitable: Boolean): Planet
+    deleteStar(starId: ID, starName: String): Star
+    deletePlanet(_id: ID, distanceFromStar: Float, declination: Float, rightAscension: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: User!, planetHabbitable: Boolean): Planet
+  } 
 `;
 
 module.exports = typeDefs;
