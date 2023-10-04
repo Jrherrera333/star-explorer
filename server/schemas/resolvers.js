@@ -156,6 +156,7 @@ const resolvers = {
       throw AuthenticationError
     }
   }
+}
 
   // removeThought: async (parent, { thoughtId }, context) => {
   //   if (context.user) {
@@ -226,7 +227,6 @@ const resolvers = {
   //   }
   //   throw AuthenticationError;
   // },
-},
-};
+
 
 module.exports = resolvers;
