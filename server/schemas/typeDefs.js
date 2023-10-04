@@ -4,7 +4,8 @@ const typeDefs = `
     username: String
     email: String
     password: String
-    thoughts: [Thought]!
+    stars: [Star]
+    planets: [Planet]
   }
 
    type Star {
@@ -14,6 +15,7 @@ const typeDefs = `
 
   type Planet {
     _id: ID
+    planetName: String!
     star: Star!
     distanceFromStar: Float
     declination: Float
@@ -33,20 +35,35 @@ const typeDefs = `
 
   type Query {
     users: [User]
+
     user(username: String!): User
+
     stars: [Star]
+
     star(starId: ID!): Star
+
+    planets(starId: ID!): [Planet]
+
+    planet(planetId: ID!): Planet
+
     me: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
+
     login(email: String!, password: String!): Auth
+
     addStar(starName: String!): Star
-    addPlanet(distanceFromStar: Float, declination: Float, rightAscension: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: User!, planetHabbitable: Boolean): Planet
+
+    addPlanet(star: Star!, distanceFromStar: Float, declination: Float, rightAscension: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: User!, planetHabbitable: Boolean): Planet
+
     editStar(starId: ID, starName: String): Star
-    editPlanet(_id: ID, distanceFromStar: Float, declination: Float, rightAscension: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: User!, planetHabbitable: Boolean): Planet
+
+    editPlanet(star: Star, _id: ID, distanceFromStar: Float, declination: Float, rightAscension: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: User!, planetHabbitable: Boolean): Planet
+
     deleteStar(starId: ID, starName: String): Star
+
     deletePlanet(_id: ID, distanceFromStar: Float, declination: Float, rightAscension: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: User!, planetHabbitable: Boolean): Planet
   } 
 `;
