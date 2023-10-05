@@ -67,7 +67,7 @@
     ]
   },
   {
-    "starName": "Ross 128 ",
+    "starName": "Ross 128",
     "firstFinder": "Kent Beck",
     "declination": 0.48,
     "rightAscension": 11.47,
@@ -107,21 +107,22 @@
         "gravity": 0
       }
     ]
-      },
+  },
+  {
+    "starName": "Ran",
+    "firstFinder": "Lernantino",
+    "declination": -9.27,
+    "rightAscension": 3.32,
+    "distanceFromEarth": 10.4749,
+    "planets": [
       {
-        "starName": "Ran",
-        "firstFinder": "Lernantino",
-        "declination": -9.27,
-        "rightAscension": 3.32,
-        "distanceFromEarth": 10.4749,
-        "planets": [
-          {
-            "planetName": "AEgir",
-            "distanceFromStar": 3.5,
-            "circularOrbit": true,
-            "stableRotation": true,
-            "water": true,
-            "gravity": 0.63
-          }
-        ]
+        "planetName": "AEgir",
+        "distanceFromStar": 3.5,
+        "circularOrbit": true,
+        "stableRotation": true,
+        "water": true,
+        "gravity": 0.63
       }
+    ]
+  }
+]
