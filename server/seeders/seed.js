@@ -53,9 +53,10 @@ db.once('open', async () => {
       }
     }
     console.log('\n\nseed processing all done!:');
-    console.log('  stars added    = ', starsAdded);
-    console.log('  stars rejected = ', starsRejected);
-    console.log('  users added    = ', totalUserSeeds, '\n\n\n');
+    console.log('  total star seeds  = ', totalStarSeeds);
+    console.log('  stars added       = ', starsAdded);
+    console.log('  stars rejected    = ', starsRejected);
+    console.log('  users added       = ', totalUserSeeds, '\n\n\n');
     process.exit(0);
   } catch (err) {
     console.error(err);
