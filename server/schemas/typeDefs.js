@@ -18,13 +18,13 @@ const typeDefs = `
     _id: ID
     planetName: String!
     star: Star!
-    distanceFromStar: Number
-    declination: Number
+    distanceFromStar: Float
+    declination: Float
     rightAscension: Number
     circularOrbit: Boolean
     stableRotation: Boolean
     water: Boolean
-    gravity: Number
+    gravity: Float
   }
 
   type Auth {
@@ -55,11 +55,11 @@ const typeDefs = `
 
     addStar(starName: String!): Star
 
-    addPlanet(star: Star!, distanceFromStar: Number, declination: Number, rightAscension: Number, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Number, firstFinder: User!): Planet
+    addPlanet(star: Star!, distanceFromStar: Float, declination: Float, rightAscension: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: User!): Planet
 
     editStar(starId: ID, starName: String): Star
 
-    editPlanet(star: Star, _id: ID, distanceFromStar: Number, declination: Number, rightAscension: Number, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Number, firstFinder: User!, planetHabbitable: Boolean): Planet
+    editPlanet(star: Star, _id: ID, distanceFromStar: Float, declination: Float, rightAscension: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: User!, planetHabbitable: Boolean): Planet
 
     deleteStar(starId: ID): Star
 
