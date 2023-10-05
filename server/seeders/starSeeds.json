@@ -124,5 +124,107 @@
         "gravity": 0.63
       }
     ]
+  },
+  {
+    "starName": "Rigil Kentaurus",
+    "firstFinder": "Kent Beck",
+    "declination": -60.50,
+    "rightAscension": 14.39,
+    "distanceFromEarth": 4.34,
+    "planets": [
+      {
+        "planetName": "Vogons",
+        "distanceFromStar": 0.7,
+        "circularOrbit": true,
+        "stableRotation": true,
+        "water": true,
+        "gravity": 20.88
+      }
+    ]
+  },
+  {
+    "starName": "Barnard's Star",
+    "firstFinder": "Kent Beck",
+    "declination": 4.41,
+    "rightAscension": 17.57,
+    "distanceFromEarth": 5.96,
+    "planets": [
+      {
+        "planetName": "Frank Drake",
+        "distanceFromStar": 1.1,
+        "circularOrbit": true,
+        "stableRotation": true,
+        "water": true,
+        "gravity": 2.45
+      }
+    ]
+  },
+  {
+    "starName": "Luhman 16",
+    "firstFinder": "Kent Beck",
+    "declination": -53.19,
+    "rightAscension": 10.49,
+    "distanceFromEarth": 6.50,
+    "planets": [
+      {
+        "planetName": "Sagan",
+        "distanceFromStar": 0.68,
+        "circularOrbit": true,
+        "stableRotation": true,
+        "water": true,
+        "gravity": 0.47
+      }
+    ]
+  },
+  {
+    "starName": "Wolf 359",
+    "firstFinder": "Kent Beck",
+    "declination": 7,
+    "rightAscension": 10.56,
+    "distanceFromEarth": 7.85,
+    "planets": [
+      {
+        "planetName": "Hawking",
+        "distanceFromStar": 3.5,
+        "circularOrbit": true,
+        "stableRotation": false,
+        "water": true,
+        "gravity": 123.58
+      }
+    ]
+  },
+  {
+    "starName": "Lalande 21185",
+    "firstFinder": "Kent Beck",
+    "declination": 35.58,
+    "rightAscension": 11.03,
+    "distanceFromEarth": 8.30,
+    "planets": [
+      {
+        "planetName": "Isaac Arthur",
+        "distanceFromStar": 1.01,
+        "circularOrbit": true,
+        "stableRotation": false,
+        "water": true,
+        "gravity": 2.31
+      }
+    ]
+  },
+  {
+    "starName": "Alpha Canis Major",
+    "firstFinder": "Kent Beck",
+    "declination": 42.58,
+    "rightAscension": -16,
+    "distanceFromEarth": 8.71,
+    "planets": [
+      {
+        "planetName": "Enrico Fermi",
+        "distanceFromStar": 1.63,
+        "circularOrbit": true,
+        "stableRotation": false,
+        "water": false,
+        "gravity": 22.39
+      }
+    ]
   }
 ]
