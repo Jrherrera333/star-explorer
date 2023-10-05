@@ -16,7 +16,7 @@ const starSchema = new Schema({
       type: Number
     },
 
-    rightAscencion: {
+    rightAscension: {
       type: Number
     },
 
@@ -30,10 +30,6 @@ const starSchema = new Schema({
         type: String,
         required: "you must enter a planet name",
         minlength: 1
-        },
-        
-        distanceFromStar:{
-          type: Number
         },
 
         circularOrbit: {
