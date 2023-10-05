@@ -12,6 +12,18 @@ const starSchema = new Schema({
       type: String,
     },
 
+    declination: {
+      type: Number
+    },
+
+    rightAscencion: {
+      type: Number
+    },
+
+    distanceFromEarth: {
+      type: Number
+    },
+
     planets: [
       {
         planetName: {
@@ -21,14 +33,6 @@ const starSchema = new Schema({
         },
         
         distanceFromStar:{
-          type: Number
-        },
-
-        declination: {
-          type: Number
-        },
-
-        rightAscention: {
           type: Number
         },
 
