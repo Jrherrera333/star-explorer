@@ -1,150 +1,5 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 [
-  
   {
-<<<<<<< HEAD
     "starName": "The Test Star",
     "firstFinder": "Brian Kernighan"
   },
@@ -212,7 +67,7 @@
     ]
   },
   {
-    "starName": "Ross 128 ",
+    "starName": "Ross 128",
     "firstFinder": "Kent Beck",
     "declination": 0.48,
     "rightAscension": 11.47,
@@ -252,25 +107,25 @@
         "gravity": 0
       }
     ]
-      },
+  },
+  {
+    "starName": "Ran",
+    "firstFinder": "Lernantino",
+    "declination": -9.27,
+    "rightAscension": 3.32,
+    "distanceFromEarth": 10.4749,
+    "planets": [
       {
-        "starName": "Ran",
-        "firstFinder": "Lernantino",
-        "declination": -9.27,
-        "rightAscension": 3.32,
-        "distanceFromEarth": 10.4749,
-        "planets": [
-          {
-            "planetName": "AEgir",
-            "distanceFromStar": 3.5,
-            "circularOrbit": true,
-            "stableRotation": true,
-            "water": true,
-            "gravity": 0.63
-          }
-        ]
+        "planetName": "AEgir",
+        "distanceFromStar": 3.5,
+        "circularOrbit": true,
+        "stableRotation": true,
+        "water": true,
+        "gravity": 0.63
       }
-=======
+    ]
+  },
+  {
     "starName": "Rigil Kentaurus",
     "firstFinder": "Kent Beck",
     "declination": -60.50,
@@ -287,13 +142,12 @@
       }
     ]
   },
-  
   {
     "starName": "Barnard's Star",
     "firstFinder": "Kent Beck",
     "declination": 4.41,
     "rightAscension": 17.57,
-    "distanceFromEarth":5.96,
+    "distanceFromEarth": 5.96,
     "planets": [
       {
         "planetName": "Frank Drake",
@@ -305,13 +159,12 @@
       }
     ]
   },
-
   {
     "starName": "Luhman 16",
     "firstFinder": "Kent Beck",
     "declination": -53.19,
     "rightAscension": 10.49,
-    "distanceFromEarth":6.50,
+    "distanceFromEarth": 6.50,
     "planets": [
       {
         "planetName": "Sagan",
@@ -323,13 +176,12 @@
       }
     ]
   },
-
   {
     "starName": "Wolf 359",
     "firstFinder": "Kent Beck",
     "declination": 7,
     "rightAscension": 10.56,
-    "distanceFromEarth":7.85,
+    "distanceFromEarth": 7.85,
     "planets": [
       {
         "planetName": "Hawking",
@@ -341,13 +193,12 @@
       }
     ]
   },
-
   {
     "starName": "Lalande 21185",
     "firstFinder": "Kent Beck",
     "declination": 35.58,
     "rightAscension": 11.03,
-    "distanceFromEarth":8.30,
+    "distanceFromEarth": 8.30,
     "planets": [
       {
         "planetName": "Isaac Arthur",
@@ -359,7 +210,6 @@
       }
     ]
   },
-
   {
     "starName": "Alpha Canis Major",
     "firstFinder": "Kent Beck",
@@ -377,8 +227,4 @@
       }
     ]
   }
- 
- 
-
 ]
->>>>>>> 952e5afd94baf963fbe718eaa08b7ad20d963882
