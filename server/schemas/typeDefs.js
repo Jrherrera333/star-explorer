@@ -25,7 +25,6 @@ const typeDefs = `
     stableRotation: Boolean
     water: Boolean
     gravity: Float
-    planetHabitable: Boolean
   }
 
   type Auth {
