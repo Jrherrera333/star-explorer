@@ -11,7 +11,7 @@ const typeDefs = `
     _id: ID
     starName: String!
     planets: [Planet]
-    firstFinder: User!
+    firstFinder: String
   }
 
   type Planet {
@@ -25,7 +25,6 @@ const typeDefs = `
     stableRotation: Boolean
     water: Boolean
     gravity: Float
-    planetHabitable: Boolean
   }
 
   type Auth {
