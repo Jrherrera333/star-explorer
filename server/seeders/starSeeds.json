@@ -5,13 +5,20 @@
   },
   {
     "starName": "The Other Test Star",
+    "declination": 20,
+    "rightAscension": 12.725,
+    "distanceFromEarth": 40,
     "firstFinder": "Kent Beck",
     "planets": [
       {
         "planetName": "the test planet",
-        "distanceFromStar": 40,
-        "declination": 20,
-        "rightAscension": 12.725,
+        "circularOrbit": true,
+        "stableRotation": true,
+        "water": true,
+        "gravity": 9.8
+      },
+      {
+        "planetName": "the cooler test planet",
         "circularOrbit": true,
         "stableRotation": true,
         "water": true,

@@ -11,25 +11,31 @@ const resolvers = {
       return User.findOne({ username });
     },
 
-    stars: async () => {
-      return Star.find().populate('starName');
+    stars: async (parent) => {
+      return await Star.find().populate('planets');
     },
 
-    star: async (parent, { starName }) => {
-      return Star.findOne({ starName })
+    star: async (parent, { starId }) => {
+      thisStar = await Star.findOne({ _id: starId })
+      console.log(thisStar);
+      return thisStar
     },
 
-    planets: async () => {
-      return Star.Planet.find().populate('planetName')
+    planets: async (parent, {starId}) => {
+      thisStar = await Star.findOne({_id: starId}).populate("planets")
+      return thisStar.planets;
     },
 
-    planet: async (parent, { planetName }) => {
-      return Star.Planet.findOne({ planetName })
+    planet: async (parent, { planetId }) => {
+      thisStar = await Star.findOne({"planets._id": planetId}, {"planets.$":1}  )
+      const [planet] = thisStar.planets;
+      return  planet;
     },
 
     me: async (parent, args, context) => {
+      console.log(context.user);
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate("stars");
+        return User.findOne({ args }).populate("stars");
       }
       throw AuthenticationError
     }
@@ -60,7 +66,7 @@ const resolvers = {
       return { token, user };
     },
 
-    addStar: async (parent, {starName, firstFinder, declination, rightAscencion, distanceFromEarth}, context) => {
+    addStar: async (parent, {starName, declination, rightAscencion, distanceFromEarth}, context) => {
       console.log(context.user)
       if (context.user) {
         const newStar = await Star.create(
@@ -82,15 +88,31 @@ const resolvers = {
       throw AuthenticationError
     },
 
-    addPlanet: async (parent, { ...star }, context) => {
+    // addComment: async (parent, { thoughtId, commentText }, context) => {
+//   if (context.user) {
+//     return Thought.findOneAndUpdate(
+//       { _id: thoughtId },
+//       {
+//         $addToSet: {
+//           comments: { commentText, commentAuthor: context.user.username },
+//         },
+//       },
+//       {
+//         new: true,
+//         runValidators: true,
+//       }
+//     );
+//   }
+
+    addPlanet: async (parent, { starId, ...planet }, context) => {
       if (context.user) {
         return Star.findOneAndUpdate(
-          { _id: context.user._id },
+          { _id: starId},
           {
             $addToSet: {
-              planet: {
-                planetName, star, distanceFromStar, circularOrbit, stableRotation, water, gravity
-              }
+              planet: [{
+                planetName, distanceFromStar, circularOrbit, stableRotation, water, gravity
+              }]
             },
           },
           {
@@ -106,21 +128,21 @@ const resolvers = {
       if (context.user) {
         return Star.findOneAndUpdate(
           { _id: starId },
-          { $addToSet: { starName: starName } }
+          { starName: starName }
         )
       }
       throw AuthenticationError
     },
 
-    editPlanet: async (parent, { ...star }, context) => {
+    editPlanet: async (parent, { starId, ...planet }, context) => {
       if (context.user) {
         return Star.findOneAndUpdate(
           { _id: star.planet._id },
           {
             $addToSet: {
-              planet: {
-                planetName, star, distanceFromStar, declination, rightAscention, circularOrbit, stableRotation, water, gravity
-              }
+              planet: [{
+                planetName, distanceFromStar, declination, rightAscention, circularOrbit, stableRotation, water, gravity
+              }]
             },
           },
           {
@@ -141,27 +163,20 @@ const resolvers = {
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $pull: { star: star.id } }
+          { $pull: { starId } }
         )
         return newStar;
       }
       throw AuthenticationError;
     },
 
-    deletePlanet: async (parent, { id }, context) => {
+    deletePlanet: async (parent, { planetId }, context) => {
       if (context.user) {
-        return Star.findOneAndUpdate({
-          _id: starId,
-        }),
-        {
-          $removeFromSet: {
-            planet: {
-              _id: id
-            }
-          }
-        }
+        return Star.findOneAndDelete({
+          planetId: planetId,
+        });
       }
-      throw AuthenticationError
+      throw new AuthenticationError("User not authenticated");
     }
   }
 }
@@ -200,21 +215,7 @@ const resolvers = {
 //   throw AuthenticationError;
 //   ('You need to be logged in!');
 // },
-// addComment: async (parent, { thoughtId, commentText }, context) => {
-//   if (context.user) {
-//     return Thought.findOneAndUpdate(
-//       { _id: thoughtId },
-//       {
-//         $addToSet: {
-//           comments: { commentText, commentAuthor: context.user.username },
-//         },
-//       },
-//       {
-//         new: true,
-//         runValidators: true,
-//       }
-//     );
-//   }
+
 //   throw AuthenticationError;
 // },
 // 
