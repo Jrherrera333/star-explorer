@@ -20,6 +20,9 @@ const typeDefs = `
     starName: String!
     planets: [Planet]
     firstFinder: String!
+    declination: Float
+    rightAscension: Float
+    distanceFromEarth: Float
   }
 
   input StarInput {
@@ -27,14 +30,14 @@ const typeDefs = `
     starName: String!
     planets: [PlanetInput]
     firstFinder: String!
+    declination: Float
+    rightAscension: Float
+    distanceFromEarth: Float
   }
 
   type Planet {
     _id: ID
     planetName: String!
-    distanceFromStar: Float
-    declination: Float
-    rightAscension: Float
     circularOrbit: Boolean
     stableRotation: Boolean
     water: Boolean
@@ -44,10 +47,6 @@ const typeDefs = `
   input PlanetInput{
       _id: ID
       planetName: String!
-      star: StarInput!
-      distanceFromStar: Float
-      declination: Float
-      rightAscension: Float
       circularOrbit: Boolean
       stableRotation: Boolean
       water: Boolean
@@ -82,15 +81,15 @@ const typeDefs = `
 
     addStar(starName: String!): Star
 
-    addPlanet(star: StarInput!, distanceFromStar: Float, declination: Float, rightAscension: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: UserInput!): Planet
+    addPlanet(starId: ID!, distanceFromStar: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float): Planet
 
     editStar(starId: ID, starName: String): Star
 
-    editPlanet(star: StarInput, _id: ID, distanceFromStar: Float, declination: Float, rightAscension: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: UserInput!, planetHabitable: Boolean): Planet
+    editPlanet(starId: ID, _id: ID, distanceFromStar: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: UserInput!, planetHabitable: Boolean): Planet
 
     deleteStar(starId: ID): Star
 
-    deletePlanet(_id: ID): Planet
+    deletePlanet(planetId: ID): Planet
   } 
 `;
 
