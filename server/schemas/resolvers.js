@@ -66,15 +66,15 @@ const resolvers = {
       return { token, user };
     },
 
-    addStar: async (parent, {starName, declination, rightAscencion, distanceFromEarth}, context) => {
+    addStar: async (parent, {starName, declination, rightAscension, distanceFromEarth}, context) => {
       console.log(context.user)
       if (context.user) {
         const newStar = await Star.create(
           {
             starName,
-            firstFinder: context.user.username,
+            firstFinder: context.user._id,
             declination,
-            rightAscencion,
+            rightAscension,
             distanceFromEarth
           }
         );
@@ -141,7 +141,7 @@ const resolvers = {
           {
             $addToSet: {
               planet: [{
-                planetName, distanceFromStar, declination, rightAscention, circularOrbit, stableRotation, water, gravity
+                planetName, distanceFromStar, declination, rightAscension, circularOrbit, stableRotation, water, gravity
               }]
             },
           },
@@ -156,9 +156,8 @@ const resolvers = {
 
     deleteStar: async (parent, { starId }, context) => {
       if (context.user) {
-        const newStar = Star.findOneAndDelete({
-          _id: starId,
-          starCreator: context.user.username
+        const newStar = await Star.findOneAndDelete({
+          _id: starId
         });
 
         await User.findOneAndUpdate(

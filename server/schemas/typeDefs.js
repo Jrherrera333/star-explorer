@@ -17,9 +17,9 @@ const typeDefs = `
 
    type Star {
     _id: ID
-    starName: String!
+    starName: String
     planets: [Planet]
-    firstFinder: String!
+    firstFinder: ID!
     declination: Float
     rightAscension: Float
     distanceFromEarth: Float
@@ -29,7 +29,7 @@ const typeDefs = `
     _id: ID
     starName: String!
     planets: [PlanetInput]
-    firstFinder: String!
+    firstFinder: ID!
     declination: Float
     rightAscension: Float
     distanceFromEarth: Float
@@ -79,7 +79,7 @@ const typeDefs = `
 
     login(email: String!, password: String!): Auth
 
-    addStar(starName: String!): Star
+    addStar(starName: String!, declination: Float, rightAscension: Float, distanceFromEarth: Float): Star
 
     addPlanet(starId: ID!, distanceFromStar: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float): Planet
 
