@@ -7,11 +7,26 @@ const typeDefs = `
     stars: [Star]
   }
 
+  input UserInput {
+    _id: ID
+    username: String
+    email: String
+    password: String
+    stars: [StarInput]
+  }
+
    type Star {
     _id: ID
     starName: String!
     planets: [Planet]
-    firstFinder: String
+    firstFinder: String!
+  }
+
+  input StarInput {
+    _id: ID
+    starName: String!
+    planets: [PlanetInput]
+    firstFinder: String!
   }
 
   type Planet {
@@ -25,6 +40,19 @@ const typeDefs = `
     stableRotation: Boolean
     water: Boolean
     gravity: Float
+  }
+
+  input PlanetInput{
+      _id: ID
+      planetName: String!
+      star: StarInput!
+      distanceFromStar: Float
+      declination: Float
+      rightAscension: Float
+      circularOrbit: Boolean
+      stableRotation: Boolean
+      water: Boolean
+      gravity: Float
   }
 
   type Auth {
@@ -55,11 +83,11 @@ const typeDefs = `
 
     addStar(starName: String!): Star
 
-    addPlanet(star: Star!, distanceFromStar: Float, declination: Float, rightAscension: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: User!): Planet
+    addPlanet(star: StarInput!, distanceFromStar: Float, declination: Float, rightAscension: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: UserInput!): Planet
 
     editStar(starId: ID, starName: String): Star
 
-    editPlanet(star: Star, _id: ID, distanceFromStar: Float, declination: Float, rightAscension: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: User!, planetHabbitable: Boolean): Planet
+    editPlanet(star: StarInput, _id: ID, distanceFromStar: Float, declination: Float, rightAscension: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: UserInput!, planetHabitable: Boolean): Planet
 
     deleteStar(starId: ID): Star
 
