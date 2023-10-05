@@ -11,7 +11,7 @@ const typeDefs = `
     _id: ID
     starName: String!
     planets: [Planet]
-    firstFinder: User!
+    firstFinder: String
   }
 
   type Planet {
@@ -20,7 +20,7 @@ const typeDefs = `
     star: Star!
     distanceFromStar: Float
     declination: Float
-    rightAscension: Number
+    rightAscension: Float
     circularOrbit: Boolean
     stableRotation: Boolean
     water: Boolean
