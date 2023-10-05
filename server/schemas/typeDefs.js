@@ -32,7 +32,6 @@ const typeDefs = `
   type Planet {
     _id: ID
     planetName: String!
-    star: Star!
     distanceFromStar: Float
     declination: Float
     rightAscension: Float

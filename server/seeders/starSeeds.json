@@ -5,6 +5,18 @@
   },
   {
     "starName": "The Other Test Star",
-    "firstFinder": "Kent Beck"
+    "firstFinder": "Kent Beck",
+    "planets": [
+      {
+        "planetName": "the test planet",
+        "distanceFromStar": 40,
+        "declination": 20,
+        "rightAscension": 12.725,
+        "circularOrbit": true,
+        "stableRotation": true,
+        "water": true,
+        "gravity": 9.8
+      }
+    ]
   }  
 ]
