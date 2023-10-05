@@ -9,7 +9,8 @@ const starSchema = new Schema({
     },
 
     firstFinder: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: "User"
     },
 
     declination: {

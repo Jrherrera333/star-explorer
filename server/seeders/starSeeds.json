@@ -9,30 +9,6 @@
   },
   {
     "starName": "The Other Test Star",
-<<<<<<< HEAD
-    "declination": 20,
-    "rightAscension": 12.725,
-    "distanceFromEarth": 40,
-    "firstFinder": "Kent Beck",
-    "planets": [
-      {
-        "planetName": "the test planet",
-        "circularOrbit": true,
-        "stableRotation": true,
-        "water": true,
-        "gravity": 9.8
-      },
-      {
-        "planetName": "the cooler test planet",
-        "circularOrbit": true,
-        "stableRotation": true,
-        "water": true,
-        "gravity": 9.8
-      }
-    ]
-  }  
-]
-=======
     "firstFinder": "Why The Lucky Stiff"
   },
   {
@@ -149,4 +125,3 @@
           }
         ]
       }
->>>>>>> ffc931f2f49aeb07fc56635f9ac054faeac5e91e

@@ -72,7 +72,7 @@ const resolvers = {
         const newStar = await Star.create(
           {
             starName,
-            firstFinder: context.user.username,
+            firstFinder: context.user._id,
             declination,
             rightAscension,
             distanceFromEarth
