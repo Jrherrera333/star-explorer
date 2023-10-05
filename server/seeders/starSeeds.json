@@ -1,0 +1,10 @@
+[
+  {
+    "starName": "The Test Star",
+    "firstFinder": "Brian Kernighan"
+  },
+  {
+    "starName": "The Other Test Star",
+    "firstFinder": "Kent Beck"
+  }  
+]
