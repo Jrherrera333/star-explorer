@@ -89,7 +89,7 @@ const typeDefs = `
 
     deleteStar(starId: ID): Star
 
-    deletePlanet(planetId: ID): Planet
+    deletePlanet(starId: ID, planetId: ID): Star
   } 
 `;
 

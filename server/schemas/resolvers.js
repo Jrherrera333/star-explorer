@@ -1,6 +1,6 @@
 const { User, Star } = require('../models');
 const { signToken } = require('../utils/auth');
-const {AuthenticationError} = require('apollo-server-express')
+const { AuthenticationError } = require('apollo-server-express')
 
 const resolvers = {
   Query: {
@@ -22,15 +22,15 @@ const resolvers = {
       return thisStar
     },
 
-    planets: async (parent, {starId}) => {
-      thisStar = await Star.findOne({_id: starId}).populate("planets")
+    planets: async (parent, { starId }) => {
+      thisStar = await Star.findOne({ _id: starId }).populate("planets")
       return thisStar.planets;
     },
 
     planet: async (parent, { planetId }) => {
-      thisStar = await Star.findOne({"planets._id": planetId}, {"planets.$":1}  )
+      thisStar = await Star.findOne({ "planets._id": planetId }, { "planets.$": 1 })
       const [planet] = thisStar.planets;
-      return  planet;
+      return planet;
     },
 
     me: async (parent, args, context) => {
@@ -67,7 +67,7 @@ const resolvers = {
       return { token, user };
     },
 
-    addStar: async (parent, {starName, declination, rightAscension, distanceFromEarth}, context) => {
+    addStar: async (parent, { starName, declination, rightAscension, distanceFromEarth }, context) => {
       console.log(context.user)
       if (context.user) {
         const newStar = await Star.create(
@@ -92,7 +92,7 @@ const resolvers = {
     addPlanet: async (parent, { starId, ...planet }, context) => {
       if (context.user) {
         return Star.findOneAndUpdate(
-          { _id: starId},
+          { _id: starId },
           {
             $addToSet: {
               planet: {
@@ -110,11 +110,12 @@ const resolvers = {
     },
 
     editStar: async (parent, { starId, starName, declination, rightAscension,
-        distanceFromEarth }, context) => {
+      distanceFromEarth }, context) => {
       if (context.user) {
         return Star.findOneAndUpdate(
           { _id: starId },
-          { starName,
+          {
+            starName,
             declination,
             rightAscension,
             distanceFromEarth
@@ -137,7 +138,7 @@ const resolvers = {
         }
         let planetFound = false;
         console.log('planet count = ', thisStar.planets.length);
-        for (let i=0 ; !planetFound && i<thisStar.planets.length; i++) {
+        for (let i = 0; !planetFound && i < thisStar.planets.length; i++) {
           console.log('planet id comparison ', thisStar.planets[i]._id, ' vs ', planetId);
           if (thisStar.planets[i]._id == planetId) {  //Note: ==, not ===
             console.log('planet found at ', i, ' for id ', thisStar.planets[i]._id);
@@ -179,6 +180,7 @@ const resolvers = {
 
     deleteStar: async (parent, { starId }, context) => {
       if (context.user) {
+
         const newStar = await Star.findOneAndDelete({
           _id: starId
         });
@@ -189,14 +191,21 @@ const resolvers = {
         )
         return newStar;
       }
-      throw AuthenticationError;
+      throw AuthenticationError("User not authenticated");
     },
 
-    deletePlanet: async (parent, { planetId }, context) => {
+    deletePlanet: async (parent, { starId, planetId }, context) => {
+
       if (context.user) {
-        return Star.findByIdAndDelete({
-          _id: planetId,
-        });
+        console.log(starId);
+        console.log(planetId);
+        return Star.findByIdAndUpdate(
+          { _id: starId },
+          { $pull: { planets: { _id: planetId } } },
+          {
+            new: true
+          }
+        );
       }
       throw new AuthenticationError("User not authenticated");
     }
