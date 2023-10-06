@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const ADD_PLANET = gql`
-mutation AddPlanet($starId: ID!, $planetName: String!, $distanceFromStar: Float, $circularOrbit: Boolean, $stableRotation: Boolean, $water: Boolean, $gravity: Float) {
+mutation addPlanet($starId: ID!, $planetName: String!, $distanceFromStar: Float, $circularOrbit: Boolean, $stableRotation: Boolean, $water: Boolean, $gravity: Float) {
   addPlanet(starId: $starId, planetName: $planetName, distanceFromStar: $distanceFromStar, circularOrbit: $circularOrbit, stableRotation: $stableRotation, water: $water, gravity: $gravity) {
     _id
     planetName
@@ -13,8 +13,8 @@ mutation AddPlanet($starId: ID!, $planetName: String!, $distanceFromStar: Float,
 }`
 
 export const ADD_STAR = gql`
-mutation AddStar($starName: String!) {
-  addStar(starName: $starName) {
+mutation Mutation($starName: String!, $declination: Float, $rightAscension: Float, $distanceFromEarth: Float) {
+  addStar(starName: $starName, declination: $declination, rightAscension: $rightAscension, distanceFromEarth: $distanceFromEarth) {
     _id
     starName
     planets {
@@ -33,7 +33,7 @@ mutation AddStar($starName: String!) {
 }`
 
 export const ADD_USER = gql`
-mutation AddUser($username: String!, $email: String!, $password: String!) {
+mutation addUser($username: String!, $email: String!, $password: String!) {
   addUser(username: $username, email: $email, password: $password) {
     token
     user {
@@ -62,7 +62,7 @@ mutation AddUser($username: String!, $email: String!, $password: String!) {
 }`
 
 export const DELETE_PLANET = gql`
-mutation AddUser($username: String!, $email: String!, $password: String!) {
+mutation addUser($username: String!, $email: String!, $password: String!) {
   addUser(username: $username, email: $email, password: $password) {
     token
     user {
@@ -91,7 +91,7 @@ mutation AddUser($username: String!, $email: String!, $password: String!) {
 }`
 
 export const DELETE_STAR = gql`
-mutation DeleteStar($starId: ID) {
+mutation deleteStar($starId: ID) {
   deleteStar(starId: $starId) {
     _id
     starName
@@ -111,7 +111,7 @@ mutation DeleteStar($starId: ID) {
 }`
 
 export const EDIT_PLANET = gql`
-mutation EditPlanet($starId: ID!, $planetId: ID!, $circularOrbit: Boolean, $stableRotation: Boolean, $water: Boolean, $gravity: Float) {
+mutation editPlanet($starId: ID!, $planetId: ID!, $circularOrbit: Boolean, $stableRotation: Boolean, $water: Boolean, $gravity: Float) {
   editPlanet(starId: $starId, planetId: $planetId, circularOrbit: $circularOrbit, stableRotation: $stableRotation, water: $water, gravity: $gravity) {
     _id
     planetName
@@ -123,7 +123,7 @@ mutation EditPlanet($starId: ID!, $planetId: ID!, $circularOrbit: Boolean, $stab
 }`
 
 export const EDIT_STAR = gql`
-mutation EditStar($starId: ID!, $starName: String!, $declination: Float!, $rightAscension: Float!, $distanceFromEarth: Float!) {
+mutation editStar($starId: ID!, $starName: String!, $declination: Float!, $rightAscension: Float!, $distanceFromEarth: Float!) {
   editStar(starId: $starId, starName: $starName, declination: $declination, rightAscension: $rightAscension, distanceFromEarth: $distanceFromEarth) {
     _id
     starName
@@ -143,7 +143,7 @@ mutation EditStar($starId: ID!, $starName: String!, $declination: Float!, $right
 }`
 
 export const LOGIN = gql`
-mutation Login($email: String!, $password: String!) {
+mutation login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
     token
     user {
