@@ -88,22 +88,6 @@ const resolvers = {
       throw AuthenticationError
     },
 
-    // addComment: async (parent, { thoughtId, commentText }, context) => {
-//   if (context.user) {
-//     return Thought.findOneAndUpdate(
-//       { _id: thoughtId },
-//       {
-//         $addToSet: {
-//           comments: { commentText, commentAuthor: context.user.username },
-//         },
-//       },
-//       {
-//         new: true,
-//         runValidators: true,
-//       }
-//     );
-//   }
-
     addPlanet: async (parent, { starId, ...planet }, context) => {
       if (context.user) {
         return Star.findOneAndUpdate(
@@ -143,22 +127,51 @@ const resolvers = {
       throw AuthenticationError
     },
 
-    editPlanet: async (parent, { starId, ...planet }, context) => {
+    editPlanet: async (parent, { starId, planetId, planetName, circularOrbit, stableRotation, water, gravity }, context) => {
       if (context.user) {
-        return Star.findOneAndUpdate(
-          { _id: star.planet._id },
-          {
-            $addToSet: {
-              planet: [{
-                planetName, distanceFromStar, declination, rightAscension, circularOrbit, stableRotation, water, gravity
-              }]
-            },
-          },
-          {
-            new: true
+        let thisStar = await Star.findById(starId);
+        if (thisStar === null) {
+          console.log('star for id ', starId, ' not found - no planet updated');
+          return null;
+        }
+        let planetFound = false;
+        console.log('planet count = ', thisStar.planets.length);
+        for (let i=0 ; !planetFound && i<thisStar.planets.length; i++) {
+          console.log('planet id comparison ', thisStar.planets[i]._id, ' vs ', planetId);
+          if (thisStar.planets[i]._id == planetId) {  //Note: ==, not ===
+            console.log('planet found at ', i, ' for id ', thisStar.planets[i]._id);
+            planetFound = true;
+            if (planetName) {
+              console.log('setting planet name to "' + planetName + '"');
+              thisStar.planets[i].planetName = planetName;
+            }
+            if (circularOrbit !== undefined && circularOrbit !== null) {
+              thisStar.planets[i].circularOrbit = circularOrbit;
+            }
+            if (stableRotation !== undefined && stableRotation !== null) {
+              thisStar.planets[i].stableRotation = stableRotation;
+            }
+            if (water !== undefined && water !== null) {
+              thisStar.planets[i].water = water;
+            }
+            if (gravity) {
+              thisStar.planets[i].gravity = gravity;
+            }
           }
-
-        )
+        }
+        if (!planetFound) {
+          console.log('planet not found for id ', planetId, ' orbiting star ', starId, ' - no planet update');
+          return null;
+        }
+        console.log('editStar return follows...');
+        return Star.findOneAndUpdate(
+          { _id: starId },
+          thisStar,
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
       }
       throw AuthenticationError;
     },
