@@ -81,7 +81,7 @@ const typeDefs = `
 
     addStar(starName: String!, declination: Float, rightAscension: Float, distanceFromEarth: Float): Star
 
-    addPlanet(starId: ID!, distanceFromStar: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float): Planet
+    addPlanet(starId: ID!, planetName: String!, distanceFromStar: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float): Planet
 
     editStar(starId: ID!, starName: String!, declination: Float!, rightAscension: Float!, distanceFromEarth: Float!): Star
 
@@ -89,7 +89,7 @@ const typeDefs = `
 
     deleteStar(starId: ID): Star
 
-    deletePlanet(planetId: ID): Planet
+    deletePlanet(starId: ID, planetId: ID): Star
   } 
 `;
 
