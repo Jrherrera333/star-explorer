@@ -142,7 +142,8 @@ mutation EditStar($starId: ID!, $starName: String!, $declination: Float!, $right
   }
 }`
 
-export const LOGIN = gql`mutation Login($email: String!, $password: String!) {
+export const LOGIN = gql`
+mutation Login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
     token
     user {
