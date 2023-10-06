@@ -1,5 +1,6 @@
 const { User, Star } = require('../models');
-const { signToken, AuthenticationError } = require('../utils/auth');
+const { signToken } = require('../utils/auth');
+const {AuthenticationError} = require('apollo-server-express')
 
 const resolvers = {
   Query: {
@@ -110,9 +111,9 @@ const resolvers = {
           { _id: starId},
           {
             $addToSet: {
-              planet: [{
+              planet: {
                 planetName, distanceFromStar, circularOrbit, stableRotation, water, gravity
-              }]
+              }
             },
           },
           {
@@ -151,7 +152,7 @@ const resolvers = {
 
         )
       }
-      throw AuthenticationError;
+      throw AuthenticationError("user not authenticated");
     },
 
     deleteStar: async (parent, { starId }, context) => {
@@ -171,8 +172,8 @@ const resolvers = {
 
     deletePlanet: async (parent, { planetId }, context) => {
       if (context.user) {
-        return Star.findOneAndDelete({
-          planetId: planetId,
+        return Star.findByIdAndDelete({
+          _id: planetId,
         });
       }
       throw new AuthenticationError("User not authenticated");
