@@ -83,7 +83,7 @@ const typeDefs = `
 
     addPlanet(starId: ID!, distanceFromStar: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float): Planet
 
-    editStar(starId: ID, starName: String): Star
+    editStar(starId: ID!, starName: String!, declination: Float!, rightAscension: Float!, distanceFromEarth: Float!): Star
 
     editPlanet(starId: ID, _id: ID, distanceFromStar: Float, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float, firstFinder: UserInput!, planetHabitable: Boolean): Planet
 

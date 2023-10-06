@@ -124,11 +124,20 @@ const resolvers = {
       throw AuthenticationError;
     },
 
-    editStar: async (parent, { starId, starName }, context) => {
+    editStar: async (parent, { starId, starName, declination, rightAscension,
+        distanceFromEarth }, context) => {
       if (context.user) {
         return Star.findOneAndUpdate(
           { _id: starId },
-          { starName: starName }
+          { starName,
+            declination,
+            rightAscension,
+            distanceFromEarth
+          },
+          {
+            new: true,
+            runValidators: true,
+          }
         )
       }
       throw AuthenticationError
