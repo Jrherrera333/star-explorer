@@ -68,7 +68,7 @@ const resolvers = {
     },
 
     addStar: async (parent, { starName, declination, rightAscension, distanceFromEarth }, context) => {
-      console.log(context.user)
+      console.log('context.user: ', context.user)
       if (context.user) {
         const newStar = await Star.create(
           {
