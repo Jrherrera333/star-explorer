@@ -7,7 +7,7 @@ const StarList = ({
   showUsername = true,
 }) => {
   if (!stars.length) {
-    return <h3>No Thoughts Yet</h3>;
+    return <h3>No Star Listed</h3>;
   }
 
   return (
