@@ -151,6 +151,6 @@ mutation login($email: String!, $password: String!) {
       username
       email
       password
-  }
+    }
   }
 }`
