@@ -87,7 +87,7 @@ function Star(props) {
 
   return (
     <div>
-      <h3>What's on your techy mind?</h3>
+      <h3>Some Star Information ... </h3>  {/*TODO*/}
 
       {isEditable ? (
         <>
@@ -108,7 +108,7 @@ function Star(props) {
 
             <div className="col-12 col-lg-3">
               <button className="btn btn-primary btn-block py-3" type="submit">
-                Add Star Information
+                Submit Star Data Changes
               </button>
             </div>
             {error && (
@@ -119,10 +119,28 @@ function Star(props) {
           </form>
         </>
       ) : (
-        <p>
-          You need to be logged in to share your thoughts. Please{' '}
-          <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
-        </p>
+        <>
+          <form
+            className="flex-row justify-center justify-space-between-md align-center"
+            onSubmit={handleFormSubmit}
+          >
+            <div className="col-12 col-lg-9">
+                <table>
+                    <tbody>
+                    <tr><td className="star-stat-label">Star Name</td><td>{props.star.starName}</td></tr>
+                    <tr><td className="star-stat-label">Declination (degrees north)</td><td>{props.star.declination}</td></tr>
+                    <tr><td className="star-stat-label">Right Ascension</td><td>{props.star.rightAscension}</td></tr>
+                    <tr><td className="star-stat-label">Distance from Earth (light years)</td><td>{props.star.distanceFromEarth}</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            {error && (
+              <div className="col-12 my-3 bg-danger text-white p-3">
+                {error.message}
+              </div>
+            )}
+          </form>
+        </>
       )}
     </div>
   );
