@@ -1,6 +1,7 @@
 const { User, Star } = require('../models');
 const { signToken } = require('../utils/auth');
 const { AuthenticationError } = require('apollo-server-express')
+const { ApolloServer } = require('apollo-server-express');
 
 const resolvers = {
   Query: {
