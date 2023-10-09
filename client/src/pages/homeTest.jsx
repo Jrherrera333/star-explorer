@@ -4,6 +4,7 @@ import StarList from '../components/StarList';
 import StarForm from '../components/StarForm';
 import PlanetForm from '../components/PlanetForm';
 import Star from '../components/Star';
+import PlanetForm from '../components/PlanetForm';
 
 import { QUERY_STARS } from '../utils/queries';
 
@@ -38,7 +39,18 @@ const HomeTest = () => {
             // TODO - couldn't get "tuple" to work with this
 This is homeTest
             {/* <Star star={stars[0]} /> */}
+<<<<<<< HEAD
             <PlanetForm star = {stars[1]}/>
+=======
+            <Star star={stars[3]} />
+            <Star star={stars[4]} />
+            <Star star={stars[5]} />
+            <Star star={stars[6]} />
+            <PlanetForm star={stars[8]} />
+            <Star star={stars[7]} />
+            <Star star={stars[8]} />
+            <Star star={stars[9]} />
+>>>>>>> 94faa030cc7b3c9ec7e6ce107d7d0658bb61e178
             </div>
             // <StarList
             //   stars={stars}

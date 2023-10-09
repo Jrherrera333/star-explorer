@@ -65,7 +65,7 @@ const StarForm = () => {
               <p>Star Name: <input name="starName" onChange={handleChange} /></p>
               <p>Declination: <input name="declination"  onChange={handleChange} /></p>
               <p>Right Ascension: <input name="rightAscension"  onChange={handleChange} /></p>
-              <p>Distance from Earth (km): <input name="distanceFromEarth"  onChange={handleChange} /></p>
+              <p>Distance from Earth (light years): <input name="distanceFromEarth"  onChange={handleChange} /></p>
             </div>
 
             <div className="col-12 col-lg-3">

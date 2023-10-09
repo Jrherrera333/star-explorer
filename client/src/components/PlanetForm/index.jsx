@@ -129,4 +129,13 @@ export default PlanetForm;
 //     setIsChecked(!isChecked);
 //   };
 
+<<<<<<< HEAD
 // const [isChecked, setIsChecked] = useState(false);
+=======
+// const [isChecked, setIsChecked] = useState(false);
+
+
+
+
+
+>>>>>>> 94faa030cc7b3c9ec7e6ce107d7d0658bb61e178
