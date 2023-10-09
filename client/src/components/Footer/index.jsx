@@ -14,9 +14,9 @@ const Footer = () => {
             &larr; Go Back
           </button>
         )}
-        <h4>
+        <h6>
           Made with Blood, Sweat, Tears, and React     
-           </h4>
+           </h6>
       </div>
     </footer>
   );
