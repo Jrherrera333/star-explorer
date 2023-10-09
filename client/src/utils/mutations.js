@@ -151,22 +151,6 @@ mutation login($email: String!, $password: String!) {
       username
       email
       password
-      stars {
-        _id
-        starName
-        planets {
-          _id
-          planetName
-          circularOrbit
-          stableRotation
-          water
-          gravity
-        }
-        firstFinder
-        declination
-        rightAscension
-        distanceFromEarth
-      }
     }
   }
 }`
