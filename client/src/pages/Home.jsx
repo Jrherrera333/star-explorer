@@ -24,7 +24,7 @@ const Home = () => {
           ) : (
             <StarList
               stars={stars}
-              title="Some Star-related verbiage goes here (TODO)"
+              title="Star Catalog"
             />
           )}
         </div>

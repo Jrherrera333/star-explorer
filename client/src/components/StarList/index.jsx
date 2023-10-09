@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Star from '../Star';
 
 const StarList = ({
   stars,
@@ -14,36 +15,37 @@ const StarList = ({
     <div>
       {showTitle && <h3>{title}</h3>}
       {stars &&
-        stars.map((list) => (
-          <div key={list._id} className="card mb-3">
-            <h4 className="card-header bg-primary text-light p-2 m-0">
+        stars.map((star) => (
+          <div key={star._id} className="card mb-3">
+            <Star star={star} />
+            {/* <h4 className="card-header bg-primary text-light p-2 m-0">
               {showUsername ? (
                 <Link
                   className="text-light"
-                  to={`/profiles/${list.firstFinder}`}
+                  to={`/profiles/${star.firstFinder}`}
                 >
-                  {list.firstFinder} <br />
+                  {star.firstFinder} <br />
                   <span style={{ fontSize: '1rem' }}>
-                    had this list on {list.createdAt}
+                    had this star on {star.createdAt}
                   </span>
                 </Link>
               ) : (
                 <>
                   <span style={{ fontSize: '1rem' }}>
-                    You had this list on {list.createdAt}
+                    You had this star on {star.createdAt}
                   </span>
                 </>
               )}
             </h4>
             <div className="card-body bg-light p-2">
-              <p>{list.thoughtText}</p>
+              <p>{star.thoughtText}</p>
             </div>
             <Link
               className="btn btn-primary btn-block btn-squared"
-              to={`/stars/${list._id}`}
+              to={`/stars/${star._id}`}
             >
-              Join the discussion on this list.
-            </Link>
+              Join the discussion on this star.
+            </Link> */}
           </div>
         ))}
     </div>
