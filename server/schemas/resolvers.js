@@ -6,11 +6,11 @@ const { ApolloServer } = require('apollo-server-express');
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find()
+      return await User.find()
     },
 
     user: async (parent, { username }) => {
-      return User.findOne({ username });
+      return await User.findOne({ username });
     },
 
     stars: async (parent) => {
@@ -37,7 +37,7 @@ const resolvers = {
     me: async (parent, args, context) => {
       console.log(context.user);
       if (context.user) {
-        return User.findOne({ args }).populate("stars");
+        return await User.findOne({ args }).populate("stars");
       }
       throw AuthenticationError
     }

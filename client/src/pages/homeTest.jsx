@@ -9,7 +9,7 @@ import { QUERY_STARS } from '../utils/queries';
 
 const HomeTest = () => {
   const { loading, data } = useQuery(QUERY_STARS);
-  const stars = data?.star || [];
+  const stars = data?.stars || [];
 
 //   const [star, setStar] = useState({});
 
