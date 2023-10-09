@@ -67,7 +67,7 @@ const PlanetList = ({ star, planet }) => {
                                         <div>
                                             <input type="text" value={list.planetName} onChange={handleFieldChange} />
                                             <label htmlFor="choices">Circular Orbit</label>
-                                            <select id="circularChoices" value={list.circularOrbit} onChange={handleFieldChange}>
+                                            <select id="circularorbit" value={list.circularOrbit} onChange={handleFieldChange}>
                                                 <option value="true">true</option>
                                                 <option value="false">false</option>
                                             </select>
