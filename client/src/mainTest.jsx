@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from './App.jsx';
-import Home from './pages/home';
+import HomeTest from './pages/homeTest';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 // import SingleStar from './pages/SingleStar';
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />  // Where the star list goes
+        element: <HomeTest />  // Where the star list go - conditionally 
       }, 
       {
         path: '/login',
@@ -34,10 +34,10 @@ const router = createBrowserRouter([
       //   path: '/me',
       //   element: <Profile />   // TODO - might not need this
       // },
-      {
-        path: '/stars/:starId',
-        element: <SingleStar />
-      }
+      // {
+      //   path: '/stars/:starId',  // TODO - not sure this is necessary
+      //   element: <SingleStar />
+      // }
     ]
   },
 ]);

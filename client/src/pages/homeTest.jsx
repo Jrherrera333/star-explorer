@@ -2,13 +2,13 @@ import { useQuery } from '@apollo/client';
 
 import StarList from '../components/StarList';
 import StarForm from '../components/StarForm';
-import Star from '../components/Planet';
+import Star from '../components/Star';
 
 import { QUERY_STARS } from '../utils/queries';
 
 const HomeTest = () => {
   const { loading, data } = useQuery(QUERY_STARS);
-  const stars = data?.stars || [];
+  const stars = data?.star || [];
 
 //   const [star, setStar] = useState({});
 
@@ -22,7 +22,7 @@ const HomeTest = () => {
     <main>
         {/* TODO - notice this special headline - to alert us that we are
         using test code rather than what we should be!!! */}
-    <h1><font color="#FF0080" size="36">This is the HomeTest page!!!</font></h1>
+    <h1><font color="#FF0080" size="36">HomeTest</font></h1>
       <div className="flex-row justify-center">
         <div
           className="col-12 col-md-10 mb-3 p-3"
@@ -40,8 +40,8 @@ const HomeTest = () => {
             // (only the first one) and doing so directly from the array
             // without using state.  That will probably need to be fixed
             // eventually, so consider this a work-around:
-            <Star star={stars[0]} />
-            {/* <Star star={star} setStar={setStar} /> */}
+            {/* <Star star={stars[0]} /> */}
+            <Star/>
             </div>
             // <StarList
             //   stars={stars}
