@@ -26,14 +26,6 @@ const router = createBrowserRouter([
         path: '/signup',
         element: <Signup />
       }, 
-      // {
-      //   path: '/profiles/:username',
-      //   element: <Profile />
-      // },
-      // {
-      //   path: '/me',
-      //   element: <Profile />   // TODO - might not need this
-      // },
       {
         path: '/stars/:starId',
         element: <SingleStar />
