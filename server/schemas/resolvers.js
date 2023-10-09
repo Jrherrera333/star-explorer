@@ -90,20 +90,38 @@ const resolvers = {
       throw AuthenticationError
     },
 
-    addPlanet: async (parent, { starId, planet }, context) => {
+    addPlanet: async (parent, args, context) => {
+      const { starId, planetName, distanceFromStar, circularOrbit, stableRotation, water, gravity } = args;
+
       if (context.user) {
-        return Star.findOneAndUpdate(
-          { _id: starId },
-          {
-            $addToSet: {
-              planet: planet
-            }
-          },
-          {
-            new: true
+        try {
+          const updatedStar = await Star.findOneAndUpdate(
+            { _id: starId },
+            {
+              $addToSet: {
+                planets: {
+                  planetName,
+                  distanceFromStar,
+                  circularOrbit,
+                  stableRotation,
+                  water,
+                  gravity,
+                },
+              },
+            },
+            { new: true }
+          );
+
+          if (!updatedStar) {
+            throw new Error('Star not found');
           }
-        );
+
+          return updatedStar.planets.find((planet) => planet.planetName === planetName);
+        } catch (error) {
+          throw new Error('Failed to add planet');
+        }
       }
+
       throw new AuthenticationError('User is not authenticated');
     },
 
@@ -127,144 +145,94 @@ const resolvers = {
       throw AuthenticationError
     },
 
-    editPlanet: async (parent, { starId, planetId, planetName, circularOrbit, stableRotation, water, gravity }, context) => {
+
+    editPlanet: async (parent, args, context) => {
+      // Destructure the arguments
+      const { starId, planetName, planetId, circularOrbit, stableRotation, water, gravity } = args;
+
+      // Check if the user is authenticated
       if (context.user) {
-        let thisStar = await Star.findById(starId);
-        if (thisStar === null) {
-          console.log('star for id ', starId, ' not found - no planet updated');
-          return null;
-        }
-        let planetFound = false;
-        console.log('planet count = ', thisStar.planets.length);
-        for (let i = 0; !planetFound && i < thisStar.planets.length; i++) {
-          console.log('planet id comparison ', thisStar.planets[i]._id, ' vs ', planetId);
-          if (thisStar.planets[i]._id == planetId) {  //Note: ==, not ===
-            console.log('planet found at ', i, ' for id ', thisStar.planets[i]._id);
-            planetFound = true;
-            if (planetName) {
-              console.log('setting planet name to "' + planetName + '"');
-              thisStar.planets[i].planetName = planetName;
-            }
-            if (circularOrbit !== undefined && circularOrbit !== null) {
-              thisStar.planets[i].circularOrbit = circularOrbit;
-            }
-            if (stableRotation !== undefined && stableRotation !== null) {
-              thisStar.planets[i].stableRotation = stableRotation;
-            }
-            if (water !== undefined && water !== null) {
-              thisStar.planets[i].water = water;
-            }
-            if (gravity) {
-              thisStar.planets[i].gravity = gravity;
-            }
+        try {
+          // Find the star by ID
+          const star = await Star.findById(starId);
+
+          // Check if the star exists
+          if (!star) {
+            throw new Error(`Star with ID ${starId} not found.`);
           }
-        }
-        if (!planetFound) {
-          console.log('planet not found for id ', planetId, ' orbiting star ', starId, ' - no planet update');
-          return null;
-        }
-        console.log('editStar return follows...');
-        return Star.findOneAndUpdate(
-          { _id: starId },
-          thisStar,
-          {
-            new: true,
-            runValidators: true,
+
+          // Find the planet by ID
+          const planet = star.planets.find((p) => p._id.toString() === planetId);
+
+          // Check if the planet exists
+          if (!planet) {
+            throw new Error(`Planet with ID ${planetId} not found.`);
           }
-        );
+
+          // Update the fields if provided
+          if (planetName !== undefined) {
+            planet.planetName = planetName;
+          }
+          if (circularOrbit !== undefined) {
+            planet.circularOrbit = circularOrbit;
+          }
+          if (stableRotation !== undefined) {
+            planet.stableRotation = stableRotation;
+          }
+          if (water !== undefined) {
+            planet.water = water;
+          }
+          if (gravity !== undefined) {
+            planet.gravity = gravity;
+          }
+
+          // Save the changes
+          await star.save();
+
+          // Return the updated planet
+          return planet;
+        } catch (err) {
+          console.error(err);
+          throw new Error('Failed to edit planet.');
+        }
+      } else {
+        throw new Error('User not authenticated.');
       }
-      throw AuthenticationError("user not authenticated");
     },
 
-    deleteStar: async (parent, { starId }, context) => {
-      if (context.user) {
+  deleteStar: async (parent, { starId }, context) => {
+    if (context.user) {
 
-        const newStar = await Star.findOneAndDelete({
-          _id: starId
-        });
+      const newStar = await Star.findOneAndDelete({
+        _id: starId
+      });
 
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { starId } }
-        )
-        return newStar;
-      }
-      throw AuthenticationError("User not authenticated");
-    },
-
-    deletePlanet: async (parent, { starId, planetId }, context) => {
-
-      if (context.user) {
-        console.log(starId);
-        console.log(planetId);
-        return Star.findByIdAndUpdate(
-          { _id: starId },
-          { $pull: { planets: { _id: planetId } } },
-          {
-            new: true
-          }
-        );
-      }
-      throw new AuthenticationError("User not authenticated");
+      await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $pull: { starId } }
+      )
+      return newStar;
     }
+    throw AuthenticationError("User not authenticated");
+  },
+
+  deletePlanet: async (parent, { starId, planetId }, context) => {
+
+    if (context.user) {
+      console.log(starId);
+      console.log(planetId);
+      return Star.findByIdAndUpdate(
+        { _id: starId },
+        { $pull: { planets: { _id: planetId } } },
+        {
+          new: true
+        }
+      );
+    }
+    throw new AuthenticationError("User not authenticated");
   }
 }
-
-// removeThought: async (parent, { thoughtId }, context) => {
-//   if (context.user) {
-//     const thought = await Thought.findOneAndDelete({
-//       _id: thoughtId,
-//       thoughtAuthor: context.user.username,
-//     });
-
-//     await User.findOneAndUpdate(
-//       { _id: context.user._id },
-//       { $pull: { thoughts: thought._id } }
-//     );
-
-//     return thought;
-//   }
-//   throw AuthenticationError;
-// },
-
-// addThought: async (parent, { thoughtText }, context) => {
-//   if (context.user) {
-//     const thought = await Thought.create({
-//       thoughtText,
-//       thoughtAuthor: context.user.username,
-//     });
-
-//     await User.findOneAndUpdate(
-//       { _id: context.user._id },
-//       { $addToSet: { thoughts: thought._id } }
-//     );
-
-//     return thought;
-//   }
-//   throw AuthenticationError;
-//   ('You need to be logged in!');
-// },
-
-//   throw AuthenticationError;
-// },
-// 
-// removeComment: async (parent, { thoughtId, commentId }, context) => {
-//   if (context.user) {
-//     return Thought.findOneAndUpdate(
-//       { _id: thoughtId },
-//       {
-//         $pull: {
-//           comments: {
-//             _id: commentId,
-//             commentAuthor: context.user.username,
-//           },
-//         },
-//       },
-//       { new: true }
-//     );
-//   }
-//   throw AuthenticationError;
-// },
+}
 
 
 module.exports = resolvers;

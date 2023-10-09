@@ -85,7 +85,7 @@ const typeDefs = `
 
     editStar(starId: ID!, starName: String!, declination: Float!, rightAscension: Float!, distanceFromEarth: Float!): Star
 
-    editPlanet(starId: ID!, planetId: ID!, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float): Planet
+    editPlanet(starId: ID!, planetName: String, planetId: ID!, circularOrbit: Boolean, stableRotation: Boolean, water: Boolean, gravity: Float): Planet
 
     deleteStar(starId: ID): Star
 
