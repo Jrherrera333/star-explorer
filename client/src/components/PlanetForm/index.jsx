@@ -17,9 +17,6 @@ const PlanetForm = ({ star }) => {
     const [gravityState, setGravityState] = useState(0);
     const [distanceFromStarState, setDistanceFromStarState] = useState(0)
 
-
-    let localPlanet = {};
-
     const [addPlanet, { error }] = useMutation
         (ADD_PLANET, {
             refetchQueries: [
@@ -32,7 +29,6 @@ const PlanetForm = ({ star }) => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log("console log", localPlanet);
 
         try {
             setPlanet(localPlanet);
