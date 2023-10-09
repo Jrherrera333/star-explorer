@@ -3,12 +3,13 @@ import { useQuery } from '@apollo/client';
 import StarList from '../components/StarList';
 import StarForm from '../components/StarForm';
 import Star from '../components/Star';
+import PlanetForm from '../components/PlanetForm';
 
 import { QUERY_STARS } from '../utils/queries';
 
 const HomeTest = () => {
   const { loading, data } = useQuery(QUERY_STARS);
-  const stars = data?.star || [];
+  const stars = data?.stars || [];
 
 //   const [star, setStar] = useState({});
 
@@ -41,7 +42,14 @@ const HomeTest = () => {
             // without using state.  That will probably need to be fixed
             // eventually, so consider this a work-around:
             {/* <Star star={stars[0]} /> */}
-            <Star/>
+            <Star star={stars[3]} />
+            <Star star={stars[4]} />
+            <Star star={stars[5]} />
+            <Star star={stars[6]} />
+            <PlanetForm star={stars[8]} />
+            <Star star={stars[7]} />
+            <Star star={stars[8]} />
+            <Star star={stars[9]} />
             </div>
             // <StarList
             //   stars={stars}
