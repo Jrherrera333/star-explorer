@@ -53,7 +53,7 @@ const StarForm = () => {
 
   return (
     <div>
-      <h3>What's on your techy mind?</h3>
+      <h3>What's Your New Discovery?</h3>
 
       {Auth.loggedIn() ? (
         <>
@@ -82,7 +82,7 @@ const StarForm = () => {
         </>
       ) : (
         <p>
-          You need to be logged in to share your thoughts. Please{' '}
+          You need to be logged in to Update your Star System. Please{' '}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
