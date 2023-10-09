@@ -2,13 +2,13 @@ import { useQuery } from '@apollo/client';
 
 import StarList from '../components/StarList';
 import StarForm from '../components/StarForm';
-import Star from '../components/Planet';
+import Star from '../components/Star';
 
 import { QUERY_STARS } from '../utils/queries';
 
 const HomeTest = () => {
   const { loading, data } = useQuery(QUERY_STARS);
-  const stars = data?.planet || [];
+  const stars = data?.star || [];
 
 //   const [star, setStar] = useState({});
 

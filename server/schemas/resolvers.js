@@ -90,24 +90,21 @@ const resolvers = {
       throw AuthenticationError
     },
 
-    addPlanet: async (parent, { starId, ...planet }, context) => {
+    addPlanet: async (parent, { starId, planet }, context) => {
       if (context.user) {
         return Star.findOneAndUpdate(
           { _id: starId },
           {
             $addToSet: {
-              planet: {
-                planetName, distanceFromStar, circularOrbit, stableRotation, water, gravity
-              }
-            },
+              planet: planet
+            }
           },
           {
             new: true
           }
-
-        )
+        );
       }
-      throw AuthenticationError;
+      throw new AuthenticationError('User is not authenticated');
     },
 
     editStar: async (parent, { starId, starName, declination, rightAscension,
