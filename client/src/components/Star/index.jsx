@@ -9,9 +9,6 @@ import Auth from '../../utils/auth';
 
 import { parseRightAsc, numericRightAscToString } from '../../utils/starMath';
 
-// TODO - this Star code is still very much a work-in-progress,
-// and probably has a lot of "dead wood" code that ultimately will
-// be either changed or removed.
 
 function Star(props) {
 
