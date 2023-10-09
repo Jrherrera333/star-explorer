@@ -5,7 +5,7 @@ import App from './App.jsx';
 import Home from './pages/home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-// import SingleStar from './pages/SingleStar';
+import SingleStar from './pages/SingleStar';
 // import Profile from './pages/Profile';
 import ErrorPage from './pages/ErrorPage';
 

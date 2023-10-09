@@ -1020,12 +1020,12 @@ a:hover {
 }
 
 .btn.btn-primary {
-  background-color: #2d3e50;
+  background-color: #2d3e5000;
   color: #d9e9e8;
 }
 
 .btn.btn-primary:hover {
-  background-color: #57779a;
+  color: orangered;
 }
 
 .btn.btn-danger {
@@ -1046,6 +1046,7 @@ a:hover {
   background: url(https://media1.giphy.com/media/mX1bWOEGPIAY1yhmKI/giphy.gif?cid=ecf05e476hg8cv4ctl976fxijcuu1qzpko03wrw2de45xkxb&ep=v1_gifs_search&rid=giphy.gif&ct=g);
   background-size:cover;
   background-position: center;
+  color: rgba(255, 255, 255, 0.377)
 }
 
 .btn.btn-light {
@@ -1057,6 +1058,7 @@ a:hover {
   background: url(https://media1.giphy.com/media/mX1bWOEGPIAY1yhmKI/giphy.gif?cid=ecf05e476hg8cv4ctl976fxijcuu1qzpko03wrw2de45xkxb&ep=v1_gifs_search&rid=giphy.gif&ct=g);
   background-size:cover;
   background-position: center;
+  color: rgba(255, 255, 255, 0.377)
 }
 
 .btn.btn-dark {
@@ -1096,7 +1098,7 @@ a:hover {
 }
 
 .card {
-  border: 1px solid #1a1a1a;
+  /* border: 1px solid #1a1a1a; */
   margin-bottom: 1rem;
 }
 
@@ -1157,8 +1159,8 @@ form .form-label {
 form .form-input {
   width: 100%;
   padding: 0.75rem;
-  color: #1a1a1a;
-  background-color: #ffffff;
+  color: #000000;
+  background-color: #e8f0fe;
   margin: 0.625rem 0;
   font-size: 1.2rem;
   border: 1px solid #484848;
