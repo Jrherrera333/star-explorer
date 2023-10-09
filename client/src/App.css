@@ -360,7 +360,7 @@ body {
     Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol';
   font-size: 16px;
-  color: #950000;
+  color: #ffffff;
 }
 
 h1,
@@ -369,7 +369,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: math;
   margin: 0 0 0.5rem;
   line-height: 1.25;
 }
@@ -984,7 +984,7 @@ a:hover {
   outline: none;
   color: #950000;
   background-color: #aeaeae;
-  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out;
 }
 
 .btn:hover {
@@ -1002,7 +1002,15 @@ a:hover {
 
 .btn.btn-lg {
   font-size: 1.25rem;
-  padding: 0.8rem 1.4rem;
+  padding: 2.2rem 1.4rem;
+  border-radius: 3rem;
+  
+}
+
+.btn.btn-lg1{
+  font-size: 1.25rem;
+  padding: 2.6rem 1.4rem;
+  border-radius: 4rem;
 }
 
 .btn.btn-block {
@@ -1030,21 +1038,25 @@ a:hover {
 }
 
 .btn.btn-info {
-  background-color: #1bbc9b;
+  background-color: #1bbc9c00;
   color: #ffffff;
 }
 
 .btn.btn-info:hover {
-  background-color: #31e1bd;
+  background: url(https://media1.giphy.com/media/mX1bWOEGPIAY1yhmKI/giphy.gif?cid=ecf05e476hg8cv4ctl976fxijcuu1qzpko03wrw2de45xkxb&ep=v1_gifs_search&rid=giphy.gif&ct=g);
+  background-size:cover;
+  background-position: center;
 }
 
 .btn.btn-light {
-  background-color: #d9e9e8;
-  color: #1a1a1a;
+  background-color: #d9e9e800;
+  color: #ffffff;
 }
 
 .btn.btn-light:hover {
-  background-color: #84b8b4;
+  background: url(https://media1.giphy.com/media/mX1bWOEGPIAY1yhmKI/giphy.gif?cid=ecf05e476hg8cv4ctl976fxijcuu1qzpko03wrw2de45xkxb&ep=v1_gifs_search&rid=giphy.gif&ct=g);
+  background-size:cover;
+  background-position: center;
 }
 
 .btn.btn-dark {
