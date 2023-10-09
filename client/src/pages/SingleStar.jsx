@@ -2,10 +2,10 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import CommentList from '../components/CommentList';
-import CommentForm from '../components/CommentForm';
+// import CommentList from '../components/CommentList';
+// import CommentForm from '../components/CommentForm';
 
-import { QUERY_SINGLE_STAR } from '../utils/queries';  // TODO ?
+import { QUERY_STAR } from '../utils/queries';  // TODO ?
 
 import Auth from '../utils/auth';  // TODO - can we do this here?
 
@@ -13,14 +13,14 @@ const SingleStar = () => {
   // Use `useParams()` to retrieve value of the route parameter `:starId`
   const { starId } = useParams();
 
-  let starCanBeModified = (Auth.loggedIn() && Auth.getProfile().data.username === star.firstFinder /*TODO*/);
-
-  const { loading, data } = useQuery(QUERY_SINGLE_STAR, {
+  const { loading, data } = useQuery(QUERY_STAR, {
     // pass URL parameter
     variables: { starId: starId },
   });
 
   const star = data?.star || {};
+
+  let starCanBeModified = (Auth.loggedIn() && Auth.getProfile().data._id === star.firstFinder);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -28,7 +28,7 @@ const SingleStar = () => {
   return (
     <div className="my-3">
       <h3 className="card-header bg-dark text-light p-2 m-0">
-        {star.starName}  // TODO - should we ever allow the starName to be modified?
+        {star.starName}  // TODO - should we ever allow the starName to be modified? Answer: NO!!!
       </h3>
       <div>
         {starCanBeModified ? (

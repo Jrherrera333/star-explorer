@@ -17,7 +17,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />  // Where the star list go - conditionally 
+        element: <Home />  // Where the star list goes
       }, 
       {
         path: '/login',
@@ -34,10 +34,10 @@ const router = createBrowserRouter([
       //   path: '/me',
       //   element: <Profile />   // TODO - might not need this
       // },
-      // {
-      //   path: '/stars/:starId',  // TODO - not sure this is necessary
-      //   element: <SingleStar />
-      // }
+      {
+        path: '/stars/:starId',
+        element: <SingleStar />
+      }
     ]
   },
 ]);
