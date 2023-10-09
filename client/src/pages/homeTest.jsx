@@ -4,7 +4,6 @@ import StarList from '../components/StarList';
 import StarForm from '../components/StarForm';
 import PlanetForm from '../components/PlanetForm';
 import Star from '../components/Star';
-import PlanetForm from '../components/PlanetForm';
 
 import { QUERY_STARS } from '../utils/queries';
 
