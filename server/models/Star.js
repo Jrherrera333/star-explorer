@@ -29,6 +29,7 @@ const starSchema = new Schema({
       {
         planetName: {
         type: String,
+        isUnique: true,
         required: "you must enter a planet name",
         minlength: 1
         },
