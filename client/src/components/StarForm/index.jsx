@@ -53,7 +53,7 @@ const StarForm = () => {
 
   return (
     <div>
-      <h3>What's on your techy mind?</h3>
+      <h3>What's Your New Discovery?</h3>
 
       {Auth.loggedIn() ? (
         <>
@@ -62,10 +62,12 @@ const StarForm = () => {
             onSubmit={handleFormSubmit}
           >
             <div className="col-12 col-lg-9">
-              <p>Star Name: <input name="starName" onChange={handleChange} /></p>
-              <p>Declination: <input name="declination"  onChange={handleChange} /></p>
-              <p>Right Ascension: <input name="rightAscension"  onChange={handleChange} /></p>
-              <p>Distance from Earth (light years): <input name="distanceFromEarth"  onChange={handleChange} /></p>
+              <table><tbody>
+              <tr><td>Star Name</td><td><input name="starName" onChange={handleChange} /></td></tr>
+              <tr><td>Declination</td><td><input name="declination"  onChange={handleChange} /></td></tr>
+              <tr><td>Right Ascension</td><td><input name="rightAscension"  onChange={handleChange} /></td></tr>
+              <tr><td>Distance from Earth (light years)</td><td><input name="distanceFromEarth"  onChange={handleChange} /></td></tr>
+              </tbody></table>
             </div>
 
             <div className="col-12 col-lg-3">
@@ -82,7 +84,7 @@ const StarForm = () => {
         </>
       ) : (
         <p>
-          You need to be logged in to share your thoughts. Please{' '}
+          You need to be logged in to Update your Star System. Please{' '}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}
