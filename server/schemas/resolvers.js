@@ -147,29 +147,22 @@ const resolvers = {
 
 
     editPlanet: async (parent, args, context) => {
-      // Destructure the arguments
       const { starId, planetName, planetId, circularOrbit, stableRotation, water, gravity } = args;
 
-      // Check if the user is authenticated
       if (context.user) {
         try {
-          // Find the star by ID
           const star = await Star.findById(starId);
 
-          // Check if the star exists
           if (!star) {
             throw new Error(`Star with ID ${starId} not found.`);
           }
 
-          // Find the planet by ID
           const planet = star.planets.find((p) => p._id.toString() === planetId);
 
-          // Check if the planet exists
           if (!planet) {
             throw new Error(`Planet with ID ${planetId} not found.`);
           }
 
-          // Update the fields if provided
           if (planetName !== undefined) {
             planet.planetName = planetName;
           }
@@ -186,10 +179,8 @@ const resolvers = {
             planet.gravity = gravity;
           }
 
-          // Save the changes
           await star.save();
 
-          // Return the updated planet
           return planet;
         } catch (err) {
           console.error(err);
