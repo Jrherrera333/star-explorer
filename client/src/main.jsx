@@ -26,14 +26,10 @@ const router = createBrowserRouter([
         path: '/signup',
         element: <Signup />
       }, 
-      // {
-      //   path: '/profiles/:username',
-      //   element: <Profile />
-      // },
-      // {
-      //   path: '/me',
-      //   element: <Profile />   // TODO - might not need this
-      // },
+      {
+        path: '/planet/:starId',
+        element: <AddPlanet />
+      },
       {
         path: '/stars/:starId',
         element: <SingleStar />
