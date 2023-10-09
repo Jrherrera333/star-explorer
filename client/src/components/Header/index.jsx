@@ -19,9 +19,9 @@ const Header = () => {
         <div>
           {Auth.loggedIn() ? (
             <>
-              <Link className="btn btn-lg btn-info m-2" to="/me">
-                {Auth.getProfile().data.username}'s profile
-              </Link>
+              <h6 className="btn btn-lg btn-info m-2" to="/me">
+                {Auth.getProfile().data.username}'s stars
+              </h6>
               <button className="btn btn-lg btn-light m-2" onClick={logout}>
                 Logout
               </button>
