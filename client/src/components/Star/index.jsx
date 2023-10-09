@@ -84,7 +84,7 @@ function Star(props) {
 
   return (
     <div>
-      <h3>Some Star Information ... </h3>  {/*TODO*/}
+      <h3>{props.star.starName} </h3> 
 
       {isEditable ? (
         <Link to={`/stars/${props.star._id}`}>
@@ -92,7 +92,7 @@ function Star(props) {
             <div className="star-readonly col-12 col-lg-9">
                 <table>
                     <tbody>
-                    <tr><td className="star-stat-label">Star Name</td><td className="star-stat-val">{props.star.starName}</td></tr>
+                    {/* <tr><td className="star-stat-label">Star Name</td><td className="star-stat-val">{props.star.starName}</td></tr> */}
                     <tr><td className="star-stat-label">Declination (degrees north)</td><td className="star-stat-val">{props.star.declination}</td></tr>
                     <tr><td className="star-stat-label">Right Ascension</td><td className="star-stat-val">{props.star.rightAscension}</td></tr>
                     <tr><td className="star-stat-label">Distance from Earth (light years)</td><td className="star-stat-val">{props.star.distanceFromEarth}</td></tr>
@@ -112,7 +112,7 @@ function Star(props) {
             <div className="star-editable col-12 col-lg-9">
                 <table>
                     <tbody>
-                    <tr><td className="star-stat-label">Star Name</td><td className="star-stat-val">{props.star.starName}</td></tr>
+                    {/* <tr><td className="star-stat-label">Star Name</td><td className="star-stat-val">{props.star.starName}</td></tr> */}
                     <tr><td className="star-stat-label">Declination (degrees north)</td><td className="star-stat-val">{props.star.declination}</td></tr>
                     <tr><td className="star-stat-label">Right Ascension</td><td className="star-stat-val">{props.star.rightAscension}</td></tr>
                     <tr><td className="star-stat-label">Distance from Earth (light years)</td><td className="star-stat-val">{props.star.distanceFromEarth}</td></tr>
