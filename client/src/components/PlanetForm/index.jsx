@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
 import { ADD_PLANET } from '../../utils/mutations';
-import { QUERY_PLANETS, QUERY_ME } from '../../utils/queries';
+import { QUERY_PLANETS, QUERY_ME, QUERY_STAR } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 
-const PlanetForm = ({ star }) => {
+const PlanetForm = ({star}) => {
+    const navigate = useNavigate();
 
     const [planet, setPlanet] = useState({});
     const [isOrbitChecked, setIsOrbitChecked] = useState(false)
@@ -16,14 +17,14 @@ const PlanetForm = ({ star }) => {
     const [planetNameState, setPlanetNameState] = useState("");
     const [gravityState, setGravityState] = useState(0);
     const [distanceFromStarState, setDistanceFromStarState] = useState(0)
-
-    const [addPlanet, { error }] = useMutation
+console.log(star)
+    const [addPlanet, { error}] = useMutation
         (ADD_PLANET, {
-            refetchQueries: [
+            refetchQueries: [,
+                QUERY_STAR,
                 QUERY_PLANETS,
-                'getPlanets',
-                QUERY_ME,
-                'me'
+                QUERY_ME
+          
             ]
         });
 
@@ -42,8 +43,10 @@ const PlanetForm = ({ star }) => {
                     gravity: gravityState
                 },
             });
-
-            setPlanet({});
+            console.log(data)
+            console.log(navigate)
+            navigate(-1);
+            // setPlanet({});
         } catch (err) {
             console.error(err);
         }
