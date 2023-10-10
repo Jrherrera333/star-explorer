@@ -24,7 +24,7 @@ const Home = () => {
           ) : (
             <StarList
               stars={stars}
-              title="Star Catalog"
+              title="STAR CATALOG"
             />
           )}
         </div>
