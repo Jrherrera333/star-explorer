@@ -33,13 +33,11 @@ const SingleStar = () => {
           'me'
       ]
   });
-  
 
   const [declination, setDeclination] = useState(star.declination);
   const [rightAscension, setRightAscension] = useState(star.rightAscension);
   const [distanceFromEarth, setDistanceFromEarth] = useState(star.distanceFromEarth);
-console.log(declination)
-console.log(rightAscension)
+
 //   export const EDIT_STAR = gql`
 // mutation editStar($starId: ID!, $starName: String!, $declination: Float!, $rightAscension: Float!, $distanceFromEarth: Float!) {
 //   editStar(starId: $starId, starName: $starName, declination: $declination, rightAscension: $rightAscension, distanceFromEarth: $distanceFromEarth) {
@@ -155,8 +153,8 @@ console.log(rightAscension)
             <div className="star-editable col-12 col-lg-9">
               <table>
                 <tbody>
-                  <tr><td className="star-stat-label">Declination (degrees north)</td><td className="star-stat-val"><input type="text" name="declination" value={declination ||star.declination} onChange={handleChange} /></td></tr>
-                  <tr><td className="star-stat-label">Right Ascension</td><td className="star-stat-val"><input type="text" name="rightAscension" value={rightAscension || star.rightAscension} onChange={handleChange} /></td></tr>
+                  <tr><td className="star-stat-label">Declination (degrees north)</td><td className="star-stat-val"><input type="text" name="declination" value={declination} onChange={handleChange} /></td></tr>
+                  <tr><td className="star-stat-label">Right Ascension</td><td className="star-stat-val"><input type="text" name="rightAscension" value={rightAscension} onChange={handleChange} /></td></tr>
                   <tr><td className="star-stat-label">Distance from Earth (light years)</td><td className="star-stat-val"><input type="text" name="distanceFromEarth" value={distanceFromEarth} onChange={handleChange} /></td></tr>
                   <tr><td className="star-stat-label">Planet Count</td><td className="star-stat-val">{star.planets.length}</td></tr>
                 </tbody>
@@ -190,6 +188,27 @@ console.log(rightAscension)
         Add a planet
       </Link>
 
+
+      {/* <div className="bg-light py-4">
+        <blockquote
+          className="p-4"
+          style={{
+            fontSize: '1.5rem',
+            fontStyle: 'italic',
+            border: '2px dotted #1a1a1a',
+            lineHeight: '1.5',
+          }}
+        >
+          {thought.thoughtText}
+        </blockquote>
+      </div>
+
+      <div className="my-5">
+        <CommentList comments={thought.comments} />
+      </div>
+      <div className="m-3 p-4" style={{ border: '1px dotted #1a1a1a' }}>
+        <CommentForm thoughtId={thought._id} />
+      </div> */}
     </div>
   );
 };

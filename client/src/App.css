@@ -161,6 +161,9 @@ textarea {
   /* 1 */
   margin: 0;
   /* 2 */
+  background-color: #94bdd0;  
+  border: 0px;
+  border-radius: 4px;
 }
 
 /**
@@ -371,6 +374,11 @@ body {
 
 .star-editable-outer{
   padding-bottom: 30px;
+  padding: 15px;
+  background: #065b83;
+  border-style: solid;
+  border-width: 0px;
+  border-radius: 15px;
 }
 h1,
 h2,
@@ -386,6 +394,31 @@ h6 {
 h1 {
   font-size: 2.25rem;
 }
+
+.star-readonly-outer{
+  padding-bottom: 30px;
+  background: #000000;
+  padding: 15px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #202020;
+  border-radius: 15px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: math;
+  margin: 0 0 0rem;
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: 2.25rem;
+}
+
 
 h2 {
   font-size: 2rem;
@@ -432,13 +465,14 @@ button {
 }
 
 a {
-  color: #1b89bc;
+  color: #94bdd0;
   text-decoration: none;
 }
 
 a:hover {
-  color: #065b83;
-  text-decoration: underline;
+  color: #e1ae36;
+  font-weight: bolder;
+  text-decoration: none;
 }
 
 /* HEIGHT / WIDTH UTILS */

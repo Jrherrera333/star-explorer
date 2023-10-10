@@ -52,7 +52,7 @@ const StarForm = () => {
   };
 
   return (
-    <div>
+    <div class="star-readonly-outer">
       <h3>What's Your New Discovery?</h3>
 
       {Auth.loggedIn() ? (
