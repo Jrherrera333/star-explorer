@@ -1070,6 +1070,20 @@ a:hover {
   color: rgba(255, 255, 255, 0.377)
 }
 
+.btn.btn-star{
+  border-radius: 5rem;
+  padding: 3rem 1.4rem;
+  background: url(https://i.pinimg.com/originals/aa/b7/fb/aab7fb781a00baa82ac1e49e2b50125c.gif);
+  background-size: cover;
+  background-position: center;
+  color:yellow;
+  font-weight:bold
+
+}
+.btn.btn-star:hover{
+  color:#31a9e1
+}
+
 .btn.btn-dark {
   background-color: #1a1a1a;
   color: #d9e9e8;
