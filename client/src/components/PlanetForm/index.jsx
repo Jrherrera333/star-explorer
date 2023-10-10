@@ -150,12 +150,6 @@ const PlanetForm = ({ star }) => {
 
 export default PlanetForm;
 
-// const handleCheckboxChange = () => {
-//     setIsChecked(!isChecked);
-//   };
-
-// const [isChecked, setIsChecked] = useState(false);
-
 
 
 
