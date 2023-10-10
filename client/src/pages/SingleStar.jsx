@@ -163,6 +163,25 @@ const SingleStar = () => {
                 </tbody>
               </table>
             </div>
+            {star.planets.map((planet) => (
+          <div key={planet._id} className="card mb-3 star-readonly-outer">
+            <table>
+            <tbody>
+              <tr><td>Planet Name</td><td>{planet.planetName}</td></tr>
+              <tr><td>has circular orbit</td><td>{planet.circularOrbit?"yes":"no"}</td></tr>
+              <tr><td>has stable rotation</td><td>{planet.stableRotation?"yes":"no"}</td></tr>
+              <tr><td>has adequate water</td><td>{planet.water?"yes":"no"}</td></tr>
+              <tr><td>gravity (m/s<sup>2</sup>)</td><td>{planet.gravity}</td></tr>
+            </tbody>
+            </table>
+          </div>
+          
+         ))}
+        <Link className="star-editable-outer" to={`/planet/${starId}`}>
+          Add a planet
+        </Link> 
+
+
             {error && (
               <div className="col-12 my-3 bg-danger text-white p-3">
                 {error.message}
@@ -171,6 +190,7 @@ const SingleStar = () => {
           </div>
           </form>
         ) : (
+          <>
           <div className="star-readonly-outer">
             <div className="star-readonly col-12 col-lg-9">
               <table>
@@ -183,16 +203,25 @@ const SingleStar = () => {
               </table>
             </div>
           </div>
-        )}
+            {star.planets.map((planet) => (
+          <div key={planet._id} className="card mb-3 star-readonly-outer">
+            <table>
+            <tbody>
+              <tr><td>Planet Name</td><td>{planet.planetName}</td></tr>
+              <tr><td>has circular orbit</td><td>{planet.circularOrbit?"yes":"no"}</td></tr>
+              <tr><td>has stable rotation</td><td>{planet.stableRotation?"yes":"no"}</td></tr>
+              <tr><td>has adequate water</td><td>{planet.water?"yes":"no"}</td></tr>
+              <tr><td>gravity (m/s<sup>2</sup>)</td><td>{planet.gravity}</td></tr>
+            </tbody>
+            </table>
+          </div>
+         ))}
+        </>
 
-      {/* TODO - Need submit and related function */}
-        
-      <Link to={`/planet/${starId}`}>
-        Add a planet
-      </Link>
 
-    </div>
-  );
+      )
+  }
+  </div>);
 };
 
 export default SingleStar;
