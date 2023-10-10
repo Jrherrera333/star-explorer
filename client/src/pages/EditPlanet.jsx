@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 
 import {QUERY_STAR} from "../utils/queries";
 
-import EditPlanet from "../components/EditPlanet"
+import EditPlanetForm from "../components/EditPlanetForm"
 
 import Auth from "../utils/auth"
 
@@ -31,7 +31,7 @@ const AddPlanet = () => {
           </h3>
           <div>
             {planetCanBeEdited ? (
-              <EditPlanet />
+              <EditPlanetForm />
             ) : (
               <></>
             )}
