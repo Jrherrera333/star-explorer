@@ -15,7 +15,7 @@ const AddPlanet = () => {
     });
 
     const star = data.star || {};
-
+console.log(star)
     let planetCanBeCreated = (Auth.loggedIn() && Auth.getProfile().data._id === star.firstFinder);
 
     if(loading) {
@@ -28,7 +28,7 @@ const AddPlanet = () => {
           </h3>
           <div>
             {planetCanBeCreated ? (
-              <PlanetForm />
+              <PlanetForm star = {star} />
             ) : (
               <></>
             )}
