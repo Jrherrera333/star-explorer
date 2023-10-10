@@ -30,6 +30,9 @@ const SingleStar = () => {
       <h3 className="card-header bg-dark text-light p-2 m-0">
         {star.starName}  // TODO - should we ever allow the starName to be modified? Answer: NO!!!
       </h3>
+      <Link to={`/planet/${starId}`}>
+        Add a planet
+      </Link>
       <div>
         {starCanBeModified ? (
           <span>Name: <input type='...'></input></span>
