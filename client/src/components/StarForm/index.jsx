@@ -71,8 +71,8 @@ const StarForm = () => {
             </div>
 
             <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
-                Add Star Information
+              <button className="btn btn-star btn-block py-6" type="submit">
+                SUBMIT NEW STAR!
               </button>
             </div>
             {error && (
