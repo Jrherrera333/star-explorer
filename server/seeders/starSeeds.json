@@ -1,19 +1,11 @@
 [
   {
-    "starName": "The Test Star",
-    "firstFinder": "Brian Kernighan"
-  },
-  {
-    "starName": "Canus Majorus",
-    "firstFinder": "Max Kanat-Alexander"
-  },
-  {
-    "starName": "The Other Test Star",
-    "firstFinder": "Why The Lucky Stiff"
-  },
-  {
-    "starName": "51 Pegasi",
-    "firstFinder": "Kent Beck"
+    "starName": "Death Star",
+    "firstFinder": "Darth Vader",
+    "declination": 19.68,
+    "rightAscension": 28.75,
+    "distanceFromEarth": 0.03
+    
   },
   {
     "starName": "61 Cygni A",
