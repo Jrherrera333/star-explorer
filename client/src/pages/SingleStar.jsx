@@ -1,6 +1,6 @@
 // Import the `useParams()` hook
-import { useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { useParams, Link } from 'react-router-dom';
+import { useQuery } from '@apollo/client'; 
 
 // import CommentList from '../components/CommentList';
 // import CommentForm from '../components/CommentForm';
@@ -30,6 +30,9 @@ const SingleStar = () => {
       <h3 className="card-header bg-dark text-light p-2 m-0">
         {star.starName}  // TODO - should we ever allow the starName to be modified? Answer: NO!!!
       </h3>
+      <Link to={`/planet/${starId}`}>
+        Add a planet
+      </Link>
       <div>
         {starCanBeModified ? (
           <span>Name: <input type='...'></input></span>

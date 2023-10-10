@@ -6,6 +6,7 @@ import Home from './pages/home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import SingleStar from './pages/SingleStar';
+import AddPlanet from './pages/AddPlanet.jsx'
 // import Profile from './pages/Profile';
 import ErrorPage from './pages/ErrorPage';
 
