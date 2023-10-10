@@ -34,12 +34,13 @@ const SingleStar = () => {
       ]
   });
   
-
+  // let declination = star.declination;
   const [declination, setDeclination] = useState(star.declination);
   const [rightAscension, setRightAscension] = useState(star.rightAscension);
-  const [distanceFromEarth, setDistanceFromEarth] = useState(star.distanceFromEarth);
-console.log(declination)
-console.log(rightAscension)
+  const [distanceFromEarth, setDistanceFromEarth] = useState(star.setDistanceFromEarth);
+  
+  console.log(declination)
+  console.log(rightAscension)
 //   export const EDIT_STAR = gql`
 // mutation editStar($starId: ID!, $starName: String!, $declination: Float!, $rightAscension: Float!, $distanceFromEarth: Float!) {
 //   editStar(starId: $starId, starName: $starName, declination: $declination, rightAscension: $rightAscension, distanceFromEarth: $distanceFromEarth) {
@@ -89,9 +90,9 @@ console.log(rightAscension)
           starId: star._id,
           starName: star.starName,
           firstFinder: star.firstFinder,
-          declination: declination,
-          rightAscension: rightAscension,
-          distanceFromEarth: distanceFromEarth
+          declination: parseFloat(declination),
+          rightAscension: parseFloat(rightAscension),
+          distanceFromEarth: parseFloat(distanceFromEarth)
         }
       })
     } catch (err) {
@@ -122,11 +123,11 @@ console.log(rightAscension)
     const { name, value } = event.target;
     console.log("SingleStar : event name & value", name, ' & ', value);
     if (name === 'declination') {
-      setDeclination(parseFloat(value));
+      setDeclination(value);
     } else if (name === 'rightAscension') {
-      setRightAscension(parseFloat(value));
+      setRightAscension(value);
     } else if (name === 'distanceFromEarth') {
-      setDistanceFromEarth(parseFloat(value));
+      setDistanceFromEarth(value);
     } else {
       console.log('SingleStar : unexpected event : ', name);
     }
@@ -157,11 +158,30 @@ console.log(rightAscension)
                 <tbody>
                   <tr><td className="star-stat-label">Declination (degrees north)</td><td className="star-stat-val"><input type="text" name="declination" value={declination ||star.declination} onChange={handleChange} /></td></tr>
                   <tr><td className="star-stat-label">Right Ascension</td><td className="star-stat-val"><input type="text" name="rightAscension" value={rightAscension || star.rightAscension} onChange={handleChange} /></td></tr>
-                  <tr><td className="star-stat-label">Distance from Earth (light years)</td><td className="star-stat-val"><input type="text" name="distanceFromEarth" value={distanceFromEarth} onChange={handleChange} /></td></tr>
+                  <tr><td className="star-stat-label">Distance from Earth (light years)</td><td className="star-stat-val"><input type="text" name="distanceFromEarth" value={distanceFromEarth || star.distanceFromEarth} onChange={handleChange} /></td></tr>
                   <tr><td className="star-stat-label">Planet Count</td><td className="star-stat-val">{star.planets.length}</td></tr>
                 </tbody>
               </table>
             </div>
+            {star.planets.map((planet) => (
+          <div key={planet._id} className="card mb-3 star-readonly-outer">
+            <table>
+            <tbody>
+              <tr><td>Planet Name</td><td>{planet.planetName}</td></tr>
+              <tr><td>has circular orbit</td><td>{planet.circularOrbit?"yes":"no"}</td></tr>
+              <tr><td>has stable rotation</td><td>{planet.stableRotation?"yes":"no"}</td></tr>
+              <tr><td>has adequate water</td><td>{planet.water?"yes":"no"}</td></tr>
+              <tr><td>gravity (m/s<sup>2</sup>)</td><td>{planet.gravity}</td></tr>
+            </tbody>
+            </table>
+          </div>
+          
+         ))}
+        <Link className="star-editable-outer" to={`/planet/${starId}`}>
+          Add a planet
+        </Link> 
+
+
             {error && (
               <div className="col-12 my-3 bg-danger text-white p-3">
                 {error.message}
@@ -170,28 +190,38 @@ console.log(rightAscension)
           </div>
           </form>
         ) : (
+          <>
           <div className="star-readonly-outer">
             <div className="star-readonly col-12 col-lg-9">
               <table>
                 <tbody>
-                  <tr><td className="star-stat-label">Declination (degrees north)</td><td className="star-stat-val">{declination}</td></tr>
-                  <tr><td className="star-stat-label">Right Ascension</td><td className="star-stat-val">{rightAscension}</td></tr>
-                  <tr><td className="star-stat-label">Distance from Earth (light years)</td><td className="star-stat-val">{distanceFromEarth}</td></tr>
+                  <tr><td className="star-stat-label">Declination (degrees north)</td><td className="star-stat-val">{declination || star.declination}</td></tr>
+                  <tr><td className="star-stat-label">Right Ascension</td><td className="star-stat-val">{rightAscension || star.rightAscension}</td></tr>
+                  <tr><td className="star-stat-label">Distance from Earth (light years)</td><td className="star-stat-val">{distanceFromEarth || star.distanceFromEarth}</td></tr>
                   <tr><td className="star-stat-label">Planet Count</td><td className="star-stat-val">{star.planets.length}</td></tr>
                 </tbody>
               </table>
             </div>
           </div>
-        )}
+            {star.planets.map((planet) => (
+          <div key={planet._id} className="card mb-3 star-readonly-outer">
+            <table>
+            <tbody>
+              <tr><td>Planet Name</td><td>{planet.planetName}</td></tr>
+              <tr><td>has circular orbit</td><td>{planet.circularOrbit?"yes":"no"}</td></tr>
+              <tr><td>has stable rotation</td><td>{planet.stableRotation?"yes":"no"}</td></tr>
+              <tr><td>has adequate water</td><td>{planet.water?"yes":"no"}</td></tr>
+              <tr><td>gravity (m/s<sup>2</sup>)</td><td>{planet.gravity}</td></tr>
+            </tbody>
+            </table>
+          </div>
+         ))}
+        </>
 
-      {/* TODO - Need submit and related function */}
-        
-      <Link to={`/planet/${starId}`}>
-        Add a planet
-      </Link>
 
-    </div>
-  );
+      )
+  }
+  </div>);
 };
 
 export default SingleStar;
