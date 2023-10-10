@@ -27,6 +27,10 @@ const router = createBrowserRouter([
         element: <Signup />
       }, 
       {
+        path: '/planet/:starId',
+        element: <AddPlanet />
+      },
+      {
         path: '/stars/:starId',
         element: <SingleStar />
       }
