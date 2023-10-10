@@ -31,7 +31,6 @@ const PlanetForm = ({ star }) => {
         event.preventDefault();
 
         try {
-            setPlanet(localPlanet);
             const { data } = await addPlanet({
                 variables: {
                     starId: star._id,
@@ -62,7 +61,6 @@ const PlanetForm = ({ star }) => {
     const handleChange = (event) => {
         console.log("WE ARE IN HANDLE CHANGE")
         console.log("EVENT: ", event);
-        console.log("LOCAL PLANET BEFORE CHANGE: ", localPlanet) 
         const { name, value } = event.target;
 
         if (name === "water") {
@@ -92,8 +90,6 @@ const PlanetForm = ({ star }) => {
         else {
             console.log("WE ARE IN THE ELSE: NAME: ", name, ", VALUE: ", value);
         }
-
-        console.log("LOCAL PLANET AFTER CHANGE:", localPlanet);
     };
 
     return (
