@@ -86,7 +86,7 @@ function Star(props) {
     <div>
       <h3>{props.star.starName} </h3> 
 
-      {isEditable ? (
+      {!isEditable ? (
         <Link to={`/stars/${props.star._id}`}>
         <div className="star-readonly-outer">
             <div className="star-readonly col-12 col-lg-9">
@@ -108,6 +108,7 @@ function Star(props) {
         </div>
         </Link>
       ) : (
+        <Link to={`/stars/${props.star._id}`}>
         <div className="star-editable-outer">
             <div className="star-editable col-12 col-lg-9">
                 <table>
@@ -126,6 +127,7 @@ function Star(props) {
               </div>
             )}
         </div>
+        </Link>
       )}
     </div>
   );
